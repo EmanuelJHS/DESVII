@@ -9,45 +9,30 @@
 <body>
 <p>Laboratorio 4.4: Manejo de Arreglos P2</p>
 
-    <?php 
-
-    //Creando el arreglo
-    $_arg = array('');
-
-    function imprimirArreglo($arreglo){
-        for ($i=0; $i < sizeOf($arreglo); $i++){
-            echo "| ". $i. " | ". $arreglo[$i]. " | ";
-        }
-    }
-
-   // do {
-
-    if(array_key_exists('enviar', $_POST)){  
-        $numero = $_REQUEST['Numero'];
-        if($numero != ""){
-            if($numero%2 == 0){
-                array_push($_arg,$numero);
-                imprimirArreglo($_arg);
+<?php 
+    if (array_key_exists('enviar', $_POST)){
+        $Numero = $_REQUEST['Numero'];
+        if($Numero != "")
+        {
+            if($Numero%2 == 0){
+                echo "Tu numero es par. <br>";
 
             }else{
-                echo "<alert> Por favor, introducir un numero par.";
+                echo "Favor de introducir numero par.";
             }
         }
     }else{
-        ?>
-        <form action="#" method="post">
-            Introducir numero par: <input type="text" name="Numero">
-        <input type="submit" varlue="enviar">
-        </form>
-        
-        <?php 
-        
-        imprimirArreglo($_arg);
+        ?> 
+
+        <FORM ACTION = "p_04.php" METHOD = "POST">
+            Introduzca un numero Par: <INPUT TYPE= "TEXT" NAME="Numero"><br>
+            <INPUT TYPE = "SUBMIT" NAME= "enviar" VALUE= "Enviar datos">
+        </FORM>
+
+        <?php
     }
-
-    //}while( sizeof($_arg) < 20);
-
-
+    
     ?>
+    
 </body>
 </html>
