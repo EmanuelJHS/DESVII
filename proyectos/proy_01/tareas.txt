@@ -1,0 +1,29 @@
+1.Campos a tomar por tipo de actividad.
+2.Como obtener la duracion del Evento
+    La duracion se ignora si es todo el dia el evento.
+    Si es todo el dia la duracion se da en dias.
+    de lo contrario se da en dias y tiempo.
+3.Suma y resta de fechas 
+4.Suma y resta de horas
+5. diferencia entre dias y horas con la libreria moment
+    ejemplo: 1d 3:10h, 0d 30m;
+
+
+
+//Codigo
+para redigir a otra pagina
+        $var=3;
+       if($var<5){
+        ?>
+        <script>
+            window.location.href="exitoso.html"; //para cambiar de ventana.
+            alert("Se ha guardado correctamente.") //Darle un mensaje al usuario.
+        </script>
+        <?php
+            }else{
+        ?>
+        <script>
+            window.location.href="fallido.php";
+            alert("Se produjo un error, intente mas tarde.")
+        </script>
+        <?php

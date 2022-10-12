@@ -4,10 +4,77 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="vAgregar.css">
+    <title>Pruebas</title>
 </head>
 <body>
-    <input type="date" name="date" id="date">
-    <input type="datetime-local" name="" id="">
+    <h1>Ventana para agregar una nueva nota</h1>
+    <hr>
+    <form name="NuevaActividad" action="" method="post">
+        <div class="contenedor">
+
+        <div class="fheader">
+            <div>
+            <label for="">Tipo:</label>
+            <select name="tipo" id="">
+                <option value="" selected>Evento</option>
+                <option value="" >Cumpleaños</option>
+                <option value="">Aniversario</option>
+                <option value="">Favorito</option>
+            </select>
+            </div>
+            <input type="submit" name="guardar" value="Guardar">
+        </div>
+
+        <div class="fbody">
+            <label for="">Titulo:
+            <input type="text" name="titulo" id="" placeholder="titulo" required>
+            </label>
+            <br>
+            <!-- Fecha de incio  y durancion -->
+            <label for="">Inicio:
+            <input type="date" name="date_inicio" id=""  >
+            <input type="time" name="time_inicio" id="" >
+            </label>
+            <br>
+            <label for="">Fin
+            <input type="date" name="date_fin" id=""  >
+            <input type="time" name="time_fin" id="" >
+            </label>
+            <br>
+            <label for="">Repetir:
+            <select name="repetir" id="">
+                <option value="" selected>Una vez</option>
+                <option value="" >Diariamente</option>
+                <option value="" >Semanal</option>
+                <option value="">Mensual</option>
+                <option value="">Anual</option>
+            </select>
+            </label>
+            <label for="todoElDia">
+                Todo el dia
+                <input type="checkbox" name="" id="">
+            </label>
+
+            <br>
+            <input type="email" name="correo" id="" placeholder="correo@prueba.com">
+            <br>
+            <input type="text" name="ubicacion" id="" placeholder="Ubicacion">
+            <br>
+            <textarea name="descripcion" id="" cols="30" rows="10" placeholder="Descripcion"></textarea>        
+        </div>
+
+    </div>
+
+
+    </form>
+
+
+
+
+
+
+
+
 </body>
 </html>
