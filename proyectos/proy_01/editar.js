@@ -8,6 +8,9 @@ let time_fin = document.getElementById('time_fin');
 let repetir = document.getElementById('repetir');
 let lb_duracion = document.getElementById('lb_duracion');
 
+//editar
+let titulo = document.getElementById('titulo');
+
 
 function cerrarVentana(){
     document.getElementById("titulo").value = "a";
@@ -68,29 +71,6 @@ function calcularDuracion(){
 
 }
 
- function setVariablesDateTime(){
-    // 2022-10-13T20:25:09-05:00
-    //libreria moment
-    let date = moment().format(); 
-    let currentDate = date.substring(0,10);
-    let currentTime = date.substring(11,16);
-
-    //Imprimiendo
-   // console.log("Hora y fecha : " + date +" \ "+ currentTime );
-
-    //set valores
-    date_inicio.value =  currentDate;
-    time_inicio.value = currentTime;
-
-    //add 30mins to date Time (Fin)
-    date = moment().add(30, 'm').format();
-    currentDate = date.substring(0,10);
-    currentTime = date.substring(11,16);
-    date_fin.value =  currentDate;
-    time_fin.value = currentTime;
-
-}
-
 function allDay_change(){
     ocultar("time_fin");
     ocultar("time_inicio");
@@ -118,14 +98,21 @@ function tipoActividad(){
         repetir.selectedIndex = '0';
         repetir.disabled=true;
         
-
    }
 
    calcularDuracion();
 
 }
 
+
+function verificarAllday(){
+    if(cb_allDay.checked == true){
+        allDay_change()
+    }
+    tipoActividad();
+}
+
 //se ejecutara al iniciar la pagina
-setVariablesDateTime();
 calcularDuracion();
+verificarAllday();
 

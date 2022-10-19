@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="vAgregar.css">
-    <title>Pruebas</title>
+    <title>Agenda</title>
 </head>
 <body>
-    <h1>Ventana para agregar una nueva nota</h1>
+    <h1>Agregar actividad</h1>
     <hr>
     <form name="NuevaActividad" action="" method="post">
         <div class="contenedor">
@@ -16,7 +16,7 @@
         <div class="fheader">
             <div>
             <label for="">Tipo:</label>
-            <select name="tipo" id="tipo" onchange="tipoActividad()" >
+            <select name="tipo" id="tipo" onchange="tipoActividad()" require >
 
                 <option value="evento" selected>Evento</option>
                 <option value="cumple" >Cumpleaños</option>
@@ -24,24 +24,22 @@
             </select>
             </div>
             <input type="submit" name="guardar" value="Guardar" >
+            <input type="submit" name="cerrar" value="Cerrar" onclick="cerrarVentana()">
         </div>
 
         <div class="fbody">
             <label for="">Titulo:
-            <input type="text" name="titulo" id="titulo" placeholder="titulo">
+            <input type="text" name="titulo" id="titulo" placeholder="titulo" required>
             </label>
             <br>
             <!-- Fecha de incio  y durancion -->
             <label for="">Inicio:
-             <input type="date" name="date_inicio" id="date_inicio" onchange="calcularDuracion()" >
+             <input type="date" name="date_inicio" id="date_inicio" onchange="calcularDuracion()" required >
             <input type="time" name="time_inicio" id="time_inicio" onchange="calcularDuracion()" >
             </label>
-            <br>
-            <label for="">Fin
-            <input type="date" name="date_fin" id="date_fin"  onchange="calcularDuracion()">
-            <input type="time" name="time_fin" id="time_fin"  onchange="calcularDuracion()">
-            <input type="text" name="duracion" id="duracion_d"  >
-            <input type="text" name="duracion" id="duracion_h" >
+            <label for="">=> Fin: 
+            <input type="date" name="date_fin" id="date_fin"  onchange="calcularDuracion()" >
+            <input type="time" name="time_fin" id="time_fin"  onchange="calcularDuracion()" >
             <label for="" id="lb_duracion" >duracion</label>
             <!-- hidden="true" -->
 
@@ -49,12 +47,12 @@
             <br>
 
             <label for="">Repetir:
-            <select name="repetir" id="repetir">
+            <select name="repetir" id="repetir" disabled="true">
                 <option value="once" selected>Una vez</option>
                 <option value="daily" >Diariamente</option>
                 <option value="weekly" >Semanal</option>
                 <option value="monthly">Mensual</option>
-                <option value="year">Anual</option>
+                <option value="yearly">Anual</option>
             </select>
             </label>
             <label for="todoElDia">
@@ -74,82 +72,120 @@
     </form>
 
     <?php
-    $dateIn = 'a';
-    $timeIn;
-    $dateOut = '';
-    $timeOut;
-    $allDay="";
-    // strtotime() y date()
-    function calcularFechas($f1,$f2){
-        echo "<br><br>";
-        $formato = "YYYY-mm-dd"; //formato de las fechas
-        $fecha1 = new DateTime($f1);
-        $fecha2 = new DateTime($f2);
-
-        $intvl = $fecha1->diff($fecha2);
-        echo $intvl->y." year, ". $intvl->m." months and ". $intvl->d ." day";
-        echo "\n";
-        echo $intvl->days . " days";
-        //Para imprimir
-        //$fecha1 = $fecha1->format($formato); //formateandolo
-        // echo "Calcular las fechas: ";
-        // echo $fecha1;
-
-
-    }
+    require_once('class/actividades.php');
+    
 
 
     if(array_key_exists('guardar',$_POST)){
-        echo 'Tipo: '.$_REQUEST['tipo']."<br>";
-        echo 'Titulo: '.$_REQUEST['titulo']."<br>";
-        echo "Inicio<br>";
-        echo 'Date_in: '.$_REQUEST['date_inicio']."<br>";
-        $GLOBALS['dateIn'] = $_REQUEST['date_inicio'];
 
-        echo 'Correo: '.$_REQUEST['correo']."<br>";
-        echo 'Ubicacion: '.$_REQUEST['ubicacion']."<br>";
-        echo 'Descripcion: '.$_REQUEST['descripcion']."<br>";
-        echo '<br>';
+        // echo 'Tipo: '.$_REQUEST['tipo']."<br>";
+        // echo 'Titulo: '.$_REQUEST['titulo']."<br>";
+        // echo 'Date_in: '.$_REQUEST['date_inicio']."<br>";
+        // echo 'Correo: '.$_REQUEST['correo']."<br>";
+        // echo 'Ubicacion: '.$_REQUEST['ubicacion']."<br>";
+        // echo 'Descripcion: '.$_REQUEST['descripcion']."<br>";
 
+        $tipo = $_REQUEST['tipo'];
+        $titulo = $_REQUEST['titulo'];
+        $date_in= $_REQUEST['date_inicio'];
+        $correo = $_REQUEST['correo'];
+        $ubicacion = $_REQUEST['ubicacion'];
+        $descripcion = $_REQUEST['descripcion'];
 
+        $time_in;
+        $date_out;
+        $time_out;
+        $repetir;
+        $allday;
 
         if($_REQUEST['tipo']=='evento'and array_key_exists('allDay',$_POST) == false  ){  
             //Para obtener (time_inicio, time_fina, date_fin)
-            echo 'Time_in: '.$_REQUEST['time_inicio']."<br>";
-            echo "Fin:<br>";
+            // echo 'Time_in: '.$_REQUEST['time_inicio']."<br>";
+            // echo 'Date_out: '.$_REQUEST['date_fin']."<br>";
+            // echo 'Time_out: '.$_REQUEST['time_fin']."<br>";
+            // echo 'Repetir: '.$_REQUEST['repetir']."<br>";
+            // $repetir = $_REQUEST['repetir'];
 
-            echo 'Date_out: '.$_REQUEST['date_fin']."<br>";
-            $GLOBALS['dateOut'] =  $_REQUEST['date_fin'];
+            $time_in = $_REQUEST['time_inicio'];
+            $date_out = $_REQUEST['date_fin'];
+            $time_out = $_REQUEST['time_fin'];
+            $repetir = "once";
+            $allday = "false";
+            //    echo 'Todo el dia: ',$allday,' <br';
 
-
-            echo 'Time_out: '.$_REQUEST['time_fin']."<br>";
-            echo 'Repetir: '.$_REQUEST['repetir']."<br>";
-           echo 'Todo el dia: false <br';
 
         }else{
             //para obtener (repetir, todo el dia)
             //Podemo asusmir que sera anual y todo el dia.
-            echo 'Repetir: year';
-            echo '<br>';
-            echo 'Todo el dia: true';
+            $time_in = "00:00:00";
+            $time_out = "23:59:59";
+            $date_out = $date_in;
+            $repetir = "once";
+            $allday = "true";
+
+            // echo 'Repetir: year';
+            // echo '<br>';
+            // echo 'Todo el dia: true';
         };
 
-        echo "<br><br>";
-        echo "Realizando calculos:";
-        echo "<br>";
-        echo "dateIn:". $GLOBALS['dateIn'];
-        echo "<br>";
-        echo "dateOut:".$GLOBALS['dateOut'];
-        echo "<br>";
+        // echo "<br>Segunda impresion:  <br>";
+        // echo " 
+        // tipo: ",$tipo,"<br> 
+        // titulo: ",$titulo,"<br>
+        // date_in: ",$date_in,"<br>
+        // correo: ",$correo,"<br>
+        // ubicacion: ",$descripcion,"<br>
+        // date_in: ",$date_in,"<br>
 
-        calcularFechas($GLOBALS['dateIn'],$GLOBALS['dateOut']);
+        // time_in: ",$time_in,"<br>
+        // date_out: ",$date_out,"<br>
+        // time_out: ",$time_out,"<br>
+        // repetir: ",$repetir,"<br>
+        // allday: ",$allday,"<br>
+        // ";
+
+        $date_in = $date_in." ".$time_in;
+        $date_out = $date_out." ".$time_out;
+
+        $obj_actividad = new actividades();
+        $actividades = $obj_actividad->agregar_actividad($tipo,
+        $titulo,
+        $ubicacion,
+        $descripcion,
+        $correo,
+        $repetir,
+        $allday,
+        $date_in,
+        $date_out
+        );
+
+        if($actividades>0){
+            ?>
+            <script>
+                window.location.href="resumen.php"; //para cambiar de ventana.
+                alert("Se ha guardado correctamente.") //Darle un mensaje al usuario.
+            </script>
+            <?php
+                }else{
+            ?>
+            <script>
+                window.location.href="resumen.php";
+                alert("Se produjo un error, intente mas tarde.")
+            </script>
+            <?php
+
 
        }
 
-    
+    }
 
-
-
+    if(array_key_exists('cerrar',$_POST)){
+        ?>
+        <script>
+            window.location.href="resumen.php";
+        </script>
+        <?php
+    }
 
     ?>
     <script src="http://momentjs.com/downloads/moment.min.js"></script>

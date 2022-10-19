@@ -8,6 +8,37 @@
 5. diferencia entre dias y horas con la libreria moment
     ejemplo: 1d 3:10h, 0d 30m;
 
+Base de datos
+1.Buscar eventos por dia, semana, mes, y ano.
+2.Arriba van lo que son "allday" ese dia.
+3.repetir todo el día o no (de no repetir todo el día, especificar rango de tiempo)
+4.por tipo de evento
+
+Pagina Principal vista(por semana)
+1.poder imprimir en pantalla los resultados
+
+para tomorow
+terminar la vista detalle
+realizar la vista reporte
+enbellecer la app
+
+
+Pendiente:
+BD: modificar consulta select
+pagina resumen:
+    1. Ver los del dia actual al ingresar (listo)
+    2. Add boton para los reportes (listo)
+    3. Add confirmacion de eliminar antes de eliminar. (adicional)
+    5. mejorar consulta de select
+    n. css
+Pagina editar: css
+Pagina agregar: css
+Pagina detalles: css, problema con el btn atras
+todo: agregar que tengan el codigo HTML correcto
+modificar las cabeceras, todos deben decir agenda
+Pagina reporte:
+    1.obtener la data
+    2.Imprimir la data (arreglos de dias, meses)
 
 
 //Codigo

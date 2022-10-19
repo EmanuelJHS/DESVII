@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bosquejo</title>
+</head>
+<body>
+
+    <div>
+        <form action="detalles.php" method="post" name="formDetalles">
+            <input type="submit" name="atras" value="Atras">
+        </form>
+        <h1 id="titulo">$tipo $titulo</h1>
+
+        <div class="time">
+            <label for="">De: </label>
+            <label for="" id="dateIn"> $dateIn</label> 
+            <label for="" id="timeIn" > $timeIn</label>
+        </div>
+
+        <div class="time">
+            <label for="">Hasta: </label>
+            <label for="" id="dateOut" > $dateOut</label>
+            <label for="" id="timeOut" > $timeOut</label>
+        </div>
+
+        <label for="" id="correo">Correo: $correo</label>
+        <br>
+        <label for="" id="ubicacion">Ubicacion: $ubicacion</label>
+        <br>
+        <label for="" id="descripcion">Descripcion: $descripcion</label>
+
+    </div>
+    
+</body>
+</html>
