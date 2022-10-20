@@ -130,20 +130,10 @@
         }
 
         if(array_key_exists('btn_eliminar',$_POST)){
-            //echo "Eliminar: ". $_REQUEST['aid'];
-            ?>
-            <!-- <script>
+            $obj_actividad = new actividades();
+            $actividades = $obj_actividad->eliminar_actividad($_REQUEST['aid']);
+            header("Location: resumen.php");
 
-                if(confirm("¿Desea la actividad?")){ -->
-                    <?php
-                    $obj_actividad = new actividades();
-                    $actividades = $obj_actividad->eliminar_actividad($_REQUEST['aid']);
-                    ?>
-            <!--      }else{
-
-                }
-             </script> -->
-            <?php
         }
 
     ?>
