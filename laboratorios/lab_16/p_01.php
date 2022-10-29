@@ -20,7 +20,7 @@
         <input type="submit" value="Convertir" name="Convertir">
     </form>
     <?php 
-    $servicio = "https://www.w3schools.com/xml/tempconvert.asmx?wsdl"; 
+    $servicio = "https://www.w3schools.com/xml/tempconvert.asmx"; 
     $parametros = array();
     if(array_key_exists('Convertir', $_POST)){
         $valor = $_POST['valor'];
