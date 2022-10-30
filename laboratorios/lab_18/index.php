@@ -24,7 +24,7 @@ require_once("validar.php");
 
              ?>
 
-        Email: <input type="email" name="mail" id="" required>
+        Email: <input type="email" name="mail" id="" pattern="/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/" required>
             <?php 
                 if(array_key_exists('registrar',$_POST)){
 
