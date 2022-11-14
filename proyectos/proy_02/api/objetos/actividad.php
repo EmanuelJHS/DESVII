@@ -14,6 +14,18 @@ class actividad extends actividad_card{
         //Procedimientos almacenados
          //Select
           //Listar con filtro
+          public function consultar_actividades_filtro(){
+            $query = "CALL sp_actividades_select_filtro('".$this->tipo."','".$this->dateIn."','".$this->dateOut."');";
+                //sentencia para prepara query
+                $stmt = $this->conn->prepare($query);
+
+                //ejecutar query
+                $stmt->execute();
+    
+                return $stmt;
+
+        }
+          
             public function consultar_actividades(){    
 
                 $query = "CALL sp_actividades_select('".$this->dateIn."','".$this->dateOut."');";

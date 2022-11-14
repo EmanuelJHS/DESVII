@@ -151,9 +151,35 @@
 
             //Imprimiendo reporte
             $card_actividad = new actividad_modelo();
-            $obj_actividad = new actividades();
-            
-            $actividades = $obj_actividad->consultar_actividades_filtro( $tipo.'',''.$fechas['in'].' 00:00:00', ''.$fechas['out'].' 23:59:59' ); //Recuerda enviar la dateIn and dateOut
+            // $obj_actividad = new actividades();
+            // $actividades = $obj_actividad->consultar_actividades_filtro( $tipo.'',''.$fechas['in'].' 00:00:00', ''.$fechas['out'].' 23:59:59' ); //Recuerda enviar la dateIn and dateOut
+
+            //Conectando a la Api
+            $data = array(
+                'tipo'=>''.$tipo.'',
+                'dateIn'=>''.$fechas['in'].'',
+                'dateOut'=>''.$fechas['out'].''
+            );
+            $post_Data = json_encode($data);
+            $ch = curl_init();
+            $options = array(
+                CURLOPT_URL => 'http://localhost/DESVII/proyectos/proy_02/api/actividad/leer_filtro.php',
+                CURLOPT_POST => 1,
+                CURLOPT_POSTFIELDS => $post_Data,
+                CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_HTTPHEADER => array('Content-Type: application/json')
+            );
+        
+            curl_setopt_array($ch,$options);
+            $result = curl_exec($ch);
+            curl_close($ch);
+
+            //Transformando a arreglo, la respusta
+            $response = json_decode($result,true);
+ 
+
+            if (isset($response['records'])){
+                $actividades = $response['records'];
 
             $nfilas = count($actividades);
 
@@ -182,6 +208,12 @@
             }else{
                 echo "<div class='mensaje'>No hay actividades, favor de agregar</div>";
             }
+
+        }else{
+            echo "<div class='mensaje'>No hay actividades, favor de agregar</div>";
+        }
+
+
 
         }
 

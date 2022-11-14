@@ -26,17 +26,19 @@
 
         //asegurar que los datos no esten vacios
         if(
+            !empty($data->tipo) &&
             !empty($data->dateIn) &&
             !empty($data->dateOut)
         
         ){
 
             //asignar valores de propiedad a producto
+            $actividad->tipo = $data->tipo;
             $actividad->dateIn = $data->dateIn.' 00:00:00';
             $actividad->dateOut = $data->dateOut.' 23:59:59';
 
             //query  actividades
-            $stmt = $actividad->consultar_actividades();
+            $stmt = $actividad->consultar_actividades_filtro();
 
             $num = $stmt->rowCount();
 

@@ -99,12 +99,7 @@
         $allday;
 
         if($_REQUEST['tipo']=='evento'and array_key_exists('allDay',$_POST) == false  ){  
-            //Para obtener (time_inicio, time_fina, date_fin)
-            // echo 'Time_in: '.$_REQUEST['time_inicio']."<br>";
-            // echo 'Date_out: '.$_REQUEST['date_fin']."<br>";
-            // echo 'Time_out: '.$_REQUEST['time_fin']."<br>";
-            // echo 'Repetir: '.$_REQUEST['repetir']."<br>";
-            // $repetir = $_REQUEST['repetir'];
+
 
             $time_in = $_REQUEST['time_inicio'];
             $date_out = $_REQUEST['date_fin'];
@@ -123,26 +118,9 @@
             $repetir = "once";
             $allday = "true";
 
-            // echo 'Repetir: year';
-            // echo '<br>';
-            // echo 'Todo el dia: true';
         };
 
-        // echo "<br>Segunda impresion:  <br>";
-        // echo " 
-        // tipo: ",$tipo,"<br> 
-        // titulo: ",$titulo,"<br>
-        // date_in: ",$date_in,"<br>
-        // correo: ",$correo,"<br>
-        // ubicacion: ",$descripcion,"<br>
-        // date_in: ",$date_in,"<br>
 
-        // time_in: ",$time_in,"<br>
-        // date_out: ",$date_out,"<br>
-        // time_out: ",$time_out,"<br>
-        // repetir: ",$repetir,"<br>
-        // allday: ",$allday,"<br>
-        // ";
 
         $date_in = $date_in." ".$time_in;
         $date_out = $date_out." ".$time_out;

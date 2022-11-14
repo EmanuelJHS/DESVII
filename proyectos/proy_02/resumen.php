@@ -44,6 +44,26 @@
             return $resultado;
         }
 
+        
+        function imprimirPlantillaResumen($obj_a){
+            echo '
+            <form method="post" action="resumen.php">    
+            <div class="actividad_card" style="border: solid 1px aquamarine">
+            <label for="" id="tipo">'.$obj_a->getTipo().'</label>
+            <label for="" id="titulo">'.$obj_a->getTitulo().'</label>
+            <br>
+            <label for="" id="dateIn">'.$obj_a->getDateIn().'</label>
+            <label for="">  ->  </label>
+            <label for="" id="dateOut">'.$obj_a->getDateOut().'</label>
+            <input type="text" name="aid" id="aid" value='.$obj_a->getId().' hidden="true">
+            <input type="submit" name="btn_detalle" value="Detalle">
+            <input type="submit" name="btn_editar" value="Editar" >
+            <input type="submit" name="btn_eliminar" value="Eliminar">
+            </div>
+            </form>';
+            
+        }
+
 
         date_default_timezone_set('America/Panama'); //Se estable la zona horario
         $DateAndTime = date('Y-m-d H:i:s ', time()); //Se obtiene la fecha
@@ -61,7 +81,8 @@
 
         //Conectando a la Api
         $data = array(
-            'dateIn'=>''.$dia.''
+            'dateIn'=>''.$dia.'',
+            'dateOut'=>''.$dia.''
     
         );
         $post_Data = json_encode($data);
@@ -103,7 +124,7 @@
 
                 // print ("<td>".$resultado['titulo']."</td>\n");
                 // print ("<td>".date("j/n/Y",strtotime($resultado['fecha']))."</td>\n");
-                $card_actividad->imprimirPlantillaResumen();
+                imprimirPlantillaResumen($card_actividad);
                 echo "</li>";
              }
             
