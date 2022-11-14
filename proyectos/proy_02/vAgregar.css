@@ -1,0 +1,16 @@
+
+
+.contenedor{
+    display: grid;
+    row-gap: 8px;
+}
+
+.fheader{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.fbody{
+
+}
