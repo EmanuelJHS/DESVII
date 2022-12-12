@@ -1,0 +1,51 @@
+body{
+    background-color: aliceblue;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;;
+}
+
+.container{
+    position: absolute;
+    top:20%
+    
+
+}
+
+.login {
+    background-color: white;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px #000000;
+    width: 400px;
+    }
+
+    .titulo{
+        display: block;
+        border-radius: 5px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+input {
+        display: block;
+        border-radius: 5px;
+        font-size: 16px;
+        background: white;
+        width: 100%;
+        border: 0;
+        padding: 10px 10px;
+        margin: 15px -10px;
+      }
+
+.btn{
+    background: rgb(198, 194, 241);
+    color: rgb(0, 0, 0);
+      }
+.btn:hover{
+    background: rgb(131, 122, 230);
+}
+
+

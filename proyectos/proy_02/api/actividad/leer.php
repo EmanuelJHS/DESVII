@@ -53,7 +53,7 @@
                     //extraer fila
                     // esto creara de $row['nombre'] a
                     //solamente $nombre
-                    extract($row);
+
 
                     $actividad_item = array(
                         "id"=> $id,

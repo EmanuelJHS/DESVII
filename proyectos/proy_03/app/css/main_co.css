@@ -1,0 +1,42 @@
+body{
+    background-color: aliceblue;
+    font-family: sans-serif;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.form_cerrar{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.c_body{
+    background-color: white;
+    border-radius: 10px;
+    height:500px;
+    width: auto;
+    padding: 8px;
+    margin: 8px;
+    box-shadow: 2px 2px 4px #000000;
+}
+
+.c_body div{
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    
+}
+
+.c_registro{
+    display: flex;
+    background-color: rgb(198, 194, 241);
+    flex-direction: column;
+    border-radius: 10px;
+   
+}

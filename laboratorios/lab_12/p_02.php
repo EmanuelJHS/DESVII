@@ -15,6 +15,7 @@
 <body>
     <h1>Manejo de sesiones</h1>
     <h2>Paso 2: Se accede a la variable de sesion almacenada y se destruye</h2>
+
     <?php
 
 
@@ -27,5 +28,6 @@
             print("Sesion no inciada, ir al <a href='p_01.php'>Paso 1</a>, para iniciar la sesion.");
         }
     ?>
+    
 </body>
 </html>

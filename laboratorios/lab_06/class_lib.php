@@ -11,7 +11,6 @@ class cliente{
         $this->nombre=$nombre;
         $this->numero=$numero;
         $this->peliculas_alquiladas=array();
-
     }
 
     function __destruct(){
