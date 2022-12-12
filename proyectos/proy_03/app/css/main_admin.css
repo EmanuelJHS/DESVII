@@ -8,6 +8,18 @@ body{
     height: 100%;
 }
 
+input[type="submit"]{
+    background-color: rgba(255, 255, 255, 0.863);
+    border-style: none;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px #000000;;
+
+}
+
+input[type="submit"]:hover{
+    background-color: rgb(131, 122, 230);
+    color: white;
+}
 
 .header{
     display: flex;
@@ -42,10 +54,12 @@ body{
 .barra_lateral{
     background-color: rgba(198, 194, 241, 0.315);
     padding: 4px;
+    border-radius: 10px;
 }
 
 .barra_lateral input{
     width: 100%;
+    margin-top: 8px;
 }
 
 
